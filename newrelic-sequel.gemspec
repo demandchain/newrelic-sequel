@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "newrelic-sequel"
-  s.version = "0.0.5"
+  s.version = "0.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["REA Group"]
@@ -20,20 +20,25 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      # s.add_runtime_dependency(%q<sequel>, ["> 3.22"])
-      # s.add_runtime_dependency(%q<newrelic_rpm>, ["~> 3.0"])
-      # s.add_development_dependency(%q<rdoc>, ["~> 3.10"])
-      # s.add_development_dependency(%q<hoe>, ["~> 2.16"])
+      s.add_runtime_dependency(%q<sequel>, ["> 3.22"])
+      s.add_runtime_dependency(%q<newrelic_rpm>, ["~> 3.0", "<= 3.8.1.221"])
+      s.add_development_dependency(%q<rdoc>, ["~> 3.10"])
+      s.add_development_dependency(%q<hoe>, ["~> 2.16"])
     else
-      # s.add_dependency(%q<sequel>, ["> 3.22"])
-      # s.add_dependency(%q<newrelic_rpm>, ["~> 3.0"])
-      # s.add_dependency(%q<rdoc>, ["~> 3.10"])
-      # s.add_dependency(%q<hoe>, ["~> 2.16"])
+      s.add_dependency(%q<sequel>, ["> 3.22"])
+      s.add_dependency(%q<newrelic_rpm>, ["~> 3.0", "<= 3.8.1.221"])
+      s.add_dependency(%q<rdoc>, ["~> 3.10"])
+      s.add_dependency(%q<hoe>, ["~> 2.16"])
     end
   else
-    # s.add_dependency(%q<sequel>, ["> 3.22"])
-    # s.add_dependency(%q<newrelic_rpm>, ["~> 3.0"])
-    # s.add_dependency(%q<rdoc>, ["~> 3.10"])
-    # s.add_dependency(%q<hoe>, ["~> 2.16"])
+    s.add_dependency(%q<sequel>, ["> 3.22"])
+    s.add_dependency(%q<newrelic_rpm>, ["~> 3.0", "<= 3.8.1.221"])
+    s.add_dependency(%q<rdoc>, ["~> 3.10"])
+    s.add_dependency(%q<hoe>, ["~> 2.16"])
   end
+
+  s.post_install_message = <<-MESSAGE
+!    Sequel instrumentation is now supported in the newrelic_rpm gem as of version 3.9.0.229.
+!    Please remove the newrelic-sequel gem from your Gemfile and replace it with newrelic_rpm ~> 3.9
+MESSAGE
 end
